@@ -40,7 +40,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             department.setId(id);
             return departmentRepository.save(department);
         }
-        return null; // Handle not found scenario
+        return null; 
     }
 
     @Override
