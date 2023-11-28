@@ -8,12 +8,13 @@ public class EmployeeDTO {
 	private String country;
 	private String position;
 	private String phoneNumber;
+
 	private Double salary;
 	private Department department;
 	private String departmentName;
 
 	public EmployeeDTO(Long id, String firstName, String lastName, String email, String country, String position,
-			String phoneNumber, Department department, String departmentName) {
+			String phoneNumber, Department department, String departmentName, Double salary) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -24,7 +25,16 @@ public class EmployeeDTO {
 		this.phoneNumber = phoneNumber;
 		this.department = department;
 		this.departmentName = departmentName;
+		this.salary = salary;
 
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 
 	public EmployeeDTO() {

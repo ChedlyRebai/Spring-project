@@ -27,10 +27,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeDTO> getAllEmployees() {
-        return this.employeeRepository.findAll().stream()
+    public List<Employee> getAllEmployees() {
+        /*return this.employeeRepository.findAll().stream()
                 .map(this::convertEntityToDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
+    	return this.employeeRepository.findAll();
     }
 
     @Override

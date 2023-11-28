@@ -9,7 +9,7 @@ public interface EmployeeService {
 
     EmployeeDTO convertEntityToDto(Employee employee);
 
-    List<EmployeeDTO> getAllEmployees();
+    List<Employee> getAllEmployees();
 
     EmployeeDTO getEmployeeById(Long id);
 

@@ -1,5 +1,8 @@
 package com.chedly.miniprojet.Entyties;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
@@ -17,6 +22,7 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	
 	// @NotBlank(message = "First name is mandatory")
 	@Size(max = 50, message = "First name must be less than 50 characters")
 	private String firstName;
@@ -38,7 +44,7 @@ public class Employee {
 	// characters")
 	private String phoneNumber;
 
-	@Email(message = "Email should be valid")
+	//@Email(message = "Email should be valid")
 	private String email;
 
 	// @NotBlank(message = "Password is mandatory")
@@ -48,6 +54,38 @@ public class Employee {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department_id")
 	private Department department;
+
+	@OneToOne
+	private Image image;
+	
+	
+	
+	public Employee(Long id,  String firstName,
+			 String lastName, Double salary,
+			String position, String country, String phoneNumber, String email,
+			String password, Department department,
+			Image image) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+		this.position = position;
+		this.country = country;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.password = password;
+		this.department = department;
+		this.image = image;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
 
 	public String getPassword() {
 		return password;
@@ -65,6 +103,13 @@ public class Employee {
 		return position;
 	}
 
+	
+	
+	public Employee() {
+		super();
+	}
+
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -104,6 +149,8 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 
 	public Department getDepartment() {
 		return department;

@@ -1,13 +1,13 @@
 package com.chedly.miniprojet.Service;
 
-import com.chedly.miniprojet.Entyties.Department;
-import com.chedly.miniprojet.Repository.DepartmentRepository;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.chedly.miniprojet.Entyties.Department;
+import com.chedly.miniprojet.Repository.DepartmentRepository;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -36,15 +36,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department updateDepartment(Long id, Department department) {
+
         if (departmentRepository.existsById(id)) {
             department.setId(id);
             return departmentRepository.save(department);
         }
-        return null; 
+
+        System.out.println("id = " + id);
+        System.out.println("department = " + department);
+        return null;
     }
 
     @Override
     public void deleteDepartment(Long id) {
         departmentRepository.deleteById(id);
     }
+
 }

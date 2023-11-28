@@ -12,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+
+
 @Entity
 public class Department {
 	@Id
@@ -24,7 +26,7 @@ public class Department {
 	@JsonIgnore
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Employee> employees;
-
+	
 	public Long getId() {
 		return id;
 	}
