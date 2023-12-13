@@ -12,8 +12,8 @@ import com.chedly.miniprojet.Entyties.Department;
 @RepositoryRestResource(path = "rest")
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
     List<Department> findByNameContaining(String keyword);
-    
+
     @Query("SELECT d FROM Department d WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :partialName, '%'))")
     List<Department> findDepartmentsByPartialName(@Param("partialName") String partialName);
-    
+
 }
